@@ -147,13 +147,13 @@ const orders = [
 
 // CODE HERE
 
-const orderTotals = orders.forEach(function (order) {
-  return orderTotals.push(order.price * (1 + order.tax));
-});
+// const orderTotals = orders.forEach(function (order) {
+//   return orderTotals.push(order.price * (1 + order.tax));
+// });
 
-const orderTotals2 = orders.forEach((order) =>
-  orderTotals2.push(order.price * (1 + order.tax))
-);
+// const orderTotals2 = orders.forEach((order) =>
+//   orderTotals2.push(order.price * (1 + order.tax))
+// );
 
 const orderTotals3 = orders.map(function (order) {
   return order.price + order.price * order.tax;
@@ -195,3 +195,15 @@ const purchases = [
 */
 
 // CODE HERE
+
+const bobsTotal = purchases
+  .filter(function (owner) {
+    return owner === "Bob";
+  })
+  .reduce(function (acc, curr) {
+    return acc + curr;
+  }, 0);
+
+const bobsTotal2 = purchases
+  .filter((owner) => owner === "Bob")
+  .reduce((acc, curr) => acc + curr, 0);
