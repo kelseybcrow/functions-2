@@ -104,7 +104,18 @@ contains(names, "Colt", (result) => {
 
 // CODE HERE
 
-const uniq = (arr, cb) => {
+const uniq = function(arr, cb) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        arr.splice(j, 1)
+      }
+    }
+  }
+  return cb(arr)
+}
+
+const uniq2 = (arr, cb) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] === arr[j]) {
@@ -124,13 +135,14 @@ The callback should print a string that says:
 
 // CODE HERE
 
-uniq(
-  names,
-  (cb = (uniqArr) =>
-    console.log(
-      "The new names array with all the duplicate items removed is " + uniqArr
+uniq(names, function(uniqArr) {
+  console.log('The new names array with all the duplicate items removed is ' + uniqArr)
+})
+
+uniq2(names,(uniqArr) =>
+    console.log(`
+      "The new names array with all the duplicate items removed is " ${uniqArr}`
     ))
-);
 
 ////////// PROBLEM 6 //////////
 
@@ -141,11 +153,9 @@ uniq(
 
 // CODE HERE
 
-const each = (names, cb) => {
-  for (let i = 0; i < names.length; i++) {
-    cb(names[i].name, names[i].index);
-  }
-};
+const each = (arr, cb) => arr.forEach((element, index) => cb(element, index))
+
+
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -157,8 +167,8 @@ const each = (names, cb) => {
 // CODE HERE
 
 each(
-  names,
-  (cb = (item, index) => console.log(`The item at index ${index} is ${item}`))
+  arr,
+  ((item, index) => console.log(`The item at index ${index} is ${item}`))
 );
 
 ////////// PROBLEM 7 //////////
