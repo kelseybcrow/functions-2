@@ -141,6 +141,12 @@ uniq(
 
 // CODE HERE
 
+const each = (names, cb) => {
+  for (let i = 0; i < names.length; i++) {
+    cb(names[i].name, names[i].index);
+  }
+};
+
 /*
   Invoke the each function, passing in the names array and a callback function.
   The callback function should take in two paremeters, item and index.
@@ -149,6 +155,11 @@ uniq(
 */
 
 // CODE HERE
+
+each(
+  names,
+  (cb = (item, index) => console.log(`The item at index ${index} is ${item}`))
+);
 
 ////////// PROBLEM 7 //////////
 
@@ -181,6 +192,9 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE
+
+const getUserById(users, id, cb)
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
