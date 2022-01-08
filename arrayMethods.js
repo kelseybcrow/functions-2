@@ -25,7 +25,7 @@ const evenNumbers = mixedNumbers.filter(function (element) {
   return element % 2 === 0;
 });
 
-const evenNumbers2 = mixedNumbers.filter((element) => element % 2 === 0);
+const evenNumbers = mixedNumbers.filter((num) => num % 2 === 0);
 
 ////////// PROBLEM 2 //////////
 
@@ -47,11 +47,11 @@ const prices = [15.0, 23.0, 78.0, 34.0, 12.0, 86.0, 12.0, 79.0, 32.0];
 
 // CODE HERE
 
-const postTaxPrices = prices.map(function (price) {
-  return price * 1.07;
+const postTaxPrices = prices.map(function (elem) {
+  return elem * 1.07;
 });
 
-const postTaxPrices2 = prices.map((price) => price * 1.07);
+const postTaxPrices2 = prices.map((elem) => elem * 1.07);
 
 ////////// PROBLEM 3 //////////
 
@@ -147,21 +147,13 @@ const orders = [
 
 // CODE HERE
 
-// const orderTotals = orders.forEach(function (order) {
-//   return orderTotals.push(order.price * (1 + order.tax));
-// });
-
-// const orderTotals2 = orders.forEach((order) =>
-//   orderTotals2.push(order.price * (1 + order.tax))
-// );
-
-const orderTotals3 = orders.map(function (order) {
-  return order.price + order.price * order.tax;
+const orderTotals = orders.map(function (elem) {
+  return elem.price + elem.price * elem.tax;
 });
 
-const orderTotals4 = orders.map(
-  (order) => order.price + order.price * order.tax
-);
+// arrow function
+
+const orderTotals2 = orders.map((elem) => elem.price + elem.price * elem.tax);
 
 ////////// PROBLEM 6 //////////
 
@@ -197,13 +189,15 @@ const purchases = [
 // CODE HERE
 
 const bobsTotal = purchases
-  .filter(function (owner) {
-    return owner === "Bob";
+  .filter(function (elem) {
+    return elem.owner === "Bob";
   })
-  .reduce(function (acc, curr) {
-    return acc + curr;
+  .reduce(function (acc, elem) {
+    return acc + elem.price;
   }, 0);
 
+// with arrow function
+
 const bobsTotal2 = purchases
-  .filter((owner) => owner === "Bob")
-  .reduce((acc, curr) => acc + curr, 0);
+  .filter((elem) => elem.owner === "Bob")
+  .reduce((acc, elem) => acc + elem.price, 0);
