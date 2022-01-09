@@ -68,15 +68,11 @@ const populations = [8175133, 3792621, 2695598, 2100263];
 
 // CODE HERE
 
-const totalPopulation = populations.reduce(function (accumulator, current) {
-  return accumulator + current;
+const totalPopulation = populations.reduce(function (acc, elem) {
+  return acc + elem;
 });
 
-const totalPopulation2 = populations.reduce(
-  (accumulator, current) => accumulator + current
-);
-
-const totalPopulation3 = populations.reduce((a, c) => a + c);
+const totalPopulation2 = populations.reduce((acc, elem) => acc + elem);
 
 ////////// PROBLEM 4 //////////
 
@@ -118,11 +114,13 @@ const monstersInYourPocket = [
 
 // CODE HERE
 
-const myStrongest = monstersInYourPocket.filter(function (monster) {
-  return monster.CP > 200;
+const myStrongest = monstersInYourPocket.filter(function (elem) {
+  return elem.CP > 200;
 });
 
-const myStrongest2 = monstersInYourPocket.filter((monster) => monster.CP > 200);
+// arrow
+
+const myStrongest2 = monstersInYourPocket.filter((elem) => elem.CP > 200);
 
 ////////// PROBLEM 5 //////////
 
