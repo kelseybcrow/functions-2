@@ -76,16 +76,16 @@ const jsNinja = () => "I am a JavaScript ninja!";
 //CODE HERE
 
 const compareNums = (num1, num2) => {
-  let bigger = 0;
-  if (num1 === num2) {
-    bigger += num1;
-  } else if (num1 < num2) {
-    bigger += num2;
+  if (num1 > num2) {
+    return num1;
   } else {
-    bigger += num1;
+    return num2;
   }
-  return bigger;
 };
+
+// ternary
+
+const compareNums2 = (num1, num2) => (num1 > num2 ? num1 : num2);
 
 ////////// PROBLEM 6 //////////
 
@@ -102,4 +102,4 @@ const compareNums = (num1, num2) => {
 
 //CODE HERE
 
-const bestMovie = (str) => str + " is the best movie ever!";
+const bestMovie = (str) => `${str} is the best movie ever!`;
