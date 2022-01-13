@@ -9,14 +9,6 @@
 
 const multiply = (num1, num2, cb) => cb(num1 * num2);
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
-
-multiply(4, 3, (answer) => {
-  console.log("The answer is " + answer); //should console.log 12
-});
-
 ////////// PROBLEMS 2 - 6 //////////
 
 // The names array will be used in problems 2 - 6.
@@ -36,10 +28,6 @@ var names = ["Tyler", "Cahlan", "Ryan", "Colt", "Tyler", "Blaine", "Cahlan"];
 
 const first = (arr, cb) => cb(arr[0]);
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
-
 first(names, (firstName) => {
   console.log("The first name in names is " + firstName);
 });
@@ -55,12 +43,8 @@ first(names, (firstName) => {
 
 const last = (arr, cb) => cb(arr[arr.length - 1]);
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
-
 last(names, (lastName) => {
-  console.log("The last name in names is " + lastName);
+  console.log(`The last name in names is ${lastName}`);
 });
 
 ////////// PROBLEM 4 //////////
@@ -74,25 +58,9 @@ last(names, (lastName) => {
 
 // CODE HERE
 
-const contains = (arr, aName, cb) => {
-  if (arr.includes(aName)) {
-    cb(true);
-  } else {
-    cb(false);
-  }
-};
+const contains = (arr, name, cb) => (arr.includes(name) ? cb(true) : cb(false));
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
-
-contains(names, "Colt", (result) => {
-  if (result === true) {
-    console.log("Colt is in the array");
-  } else {
-    console.log("Colt is not in the array");
-  }
-});
+const contains2 = (arr, name, cb) => cb(arr.includes(name));
 
 ////////// PROBLEM 5 //////////
 
@@ -104,29 +72,19 @@ contains(names, "Colt", (result) => {
 
 // CODE HERE
 
-const uniq = function(arr, cb) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 1; j < arr.length; j++) {
-      if (arr[i] === arr[j]) {
-        arr.splice(j, 1)
-      }
-    }
-  }
-  return cb(arr)
-}
-
-const uniq2 = (arr, cb) => {
+const uniq = (arr, cb) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] === arr[j]) {
         arr.splice(j, 1);
+        x--;
       }
     }
   }
-  return cb(arr);
+  cb(arr);
 };
 
-/*
+/*  
 Invoke the uniq function, passing in the names array from above and a callback function.
 The callback function should take in one parameter called uniqArr.
 The callback should print a string that says:
@@ -135,14 +93,11 @@ The callback should print a string that says:
 
 // CODE HERE
 
-uniq(names, function(uniqArr) {
-  console.log('The new names array with all the duplicate items removed is ' + uniqArr)
-})
-
-uniq2(names,(uniqArr) =>
-    console.log(`
-      "The new names array with all the duplicate items removed is " ${uniqArr}`
-    ))
+uniq(names, (uniqArr) =>
+  console.log(
+    `The new names array with all the duplicate items removed is ${uniqArr}`
+  )
+);
 
 ////////// PROBLEM 6 //////////
 
@@ -153,9 +108,7 @@ uniq2(names,(uniqArr) =>
 
 // CODE HERE
 
-const each = (arr, cb) => arr.forEach((element, index) => cb(element, index))
-
-
+const each = (arr, cb) => arr.forEach((elem, i) => cb(elem, i));
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -166,9 +119,8 @@ const each = (arr, cb) => arr.forEach((element, index) => cb(element, index))
 
 // CODE HERE
 
-each(
-  arr,
-  ((item, index) => console.log(`The item at index ${index} is ${item}`))
+each(names, (elem, index) =>
+  console.log(`The item at index ${index} is ${elem}`)
 );
 
 ////////// PROBLEM 7 //////////
@@ -203,16 +155,21 @@ var users = [
 
 // CODE HERE
 
-const getUserById(users, id, cb)
+const getUserById = (arr, id, cb) =>
+  arr.forEach((elem) => (elem.id === id ? cb(elem) : null));
 
+// function call
 
-// UNCOMMENT THE FUNCTION CALL BELOW
-// RUN THIS FILE WITH NODE
-// CHECK YOUR ANSWER
-
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address)
-// })
+getUserById(users, "16t", (user) => {
+  console.log(
+    "The user with the id 16t has the email of " +
+      user.email +
+      " the name of " +
+      user.name +
+      " and the address of " +
+      user.address
+  );
+});
 
 ////////// CHALLENGE //////////
 
