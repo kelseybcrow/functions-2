@@ -155,7 +155,16 @@ var users = [
 
 // CODE HERE
 
-const getUserById = (arr, id, cb) =>
+const getUserById = (arr, id, cb) => {
+  arr.forEach((elem) => {
+    if (elem.id === id) {
+      cb(elem);
+    }
+  });
+};
+
+// ternary
+const getUserById2 = (arr, id, cb) =>
   arr.forEach((elem) => (elem.id === id ? cb(elem) : null));
 
 // function call
@@ -189,6 +198,11 @@ getUserById(users, "16t", (user) => {
 
 // CODE HERE
 
+const addingFactory = (num1) => (cb = (num2) => num1 + num2);
+
+// without 'cb'
+const addingFactory2 = (num1) => (num2) => num1 + num2;
+
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -203,6 +217,9 @@ getUserById(users, "16t", (user) => {
 
 // CODE HERE
 
+const addTen = addingFactory2(10);
+console.log(addTen);
+
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -214,6 +231,9 @@ getUserById(users, "16t", (user) => {
 */
 
 // CODE HERE
+
+console.log(addTen(20));
+console.log(addTen(45));
 
 /*
   Let's make another function from the addingFactory. 
@@ -227,3 +247,7 @@ getUserById(users, "16t", (user) => {
 */
 
 // CODE HERE
+
+const addNumber = addingFactory2(30);
+console.log(addNumber(15));
+console.log(addNumber(25));
