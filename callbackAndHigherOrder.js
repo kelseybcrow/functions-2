@@ -248,6 +248,6 @@ console.log(addTen(45));
 
 // CODE HERE
 
-const addNumber = addingFactory2(30);
-console.log(addNumber(15));
-console.log(addNumber(25));
+const addThirty = addingFactory2(30);
+console.log(addThirty(15));
+console.log(addThirty(25));
